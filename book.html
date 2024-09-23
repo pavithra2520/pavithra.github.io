@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Bus Journey</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section class="book-now">
+        <div class="background-overlay">
+            <img src="banner2.png" alt="Bus Logo" class="background-logo">
+        </div>
+        <div class="book-now-content">
+            <h2>Book Your Journey</h2>
+            <form id="booking-form">
+                <div id="initial-info">
+                    <div class="info">
+                        <div class="info-item">
+                            <h3>From:</h3>
+                            <input type="text" id="from-city" placeholder="Departure City" required>
+                        </div>
+                        <div class="info-item">
+                            <h3>To:</h3>
+                            <input type="text" id="to-city" placeholder="Destination City" required>
+                        </div>
+                        <div class="info-item">
+                            <h3>Travel Date:</h3>
+                            <input type="date" id="travel-date" required>
+                        </div>
+                        <button type="button" id="show-buses" class="cta-btn">Show Available Buses</button>
+                    </div>
+                </div>
+
+                <div id="bus-results" class="hidden">
+                    <h3>Available Buses:</h3>
+                    <ul id="bus-list"></ul>
+                    <button type="button" id="back-to-initial" class="cta-btn">Back</button>
+                </div>
+
+                <div id="seat-selection-section" class="hidden">
+                    <h3>Select Your Seat:</h3>
+                    <div class="seat-container">
+                        <div class="seat-section">
+                            <h4>Upper Berths</h4>
+                            <div id="upper-berths" class="seat-grid"></div>
+                        </div>
+                        <div class="seat-section">
+                            <h4>Lower Berths</h4>
+                            <div id="lower-berths" class="seat-grid"></div>
+                        </div>
+                    </div>
+                    <button type="button" id="back-to-bus-results" class="cta-btn">Back</button>
+                    <button type="button" id="continue-to-passenger-details" class="cta-btn">Continue to Passenger Details</button>
+                </div>
+
+                <div id="passenger-details-section" class="hidden">
+                    <h3>Enter Passenger Details:</h3>
+                    <div id="passenger-inputs">
+                        <div class="info-item">
+                            <h4>Name:</h4>
+                            <input type="text" id="passenger-name" placeholder="Full Name" required>
+                        </div>
+                        <div class="info-item">
+                            <h4>Age:</h4>
+                            <input type="number" id="passenger-age" placeholder="Age" required>
+                        </div>
+                        <div class="info-item">
+                            <h4>Gender:</h4>
+                            <select id="passenger-gender" required>
+                                <option value="" disabled selected>Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="info-item">
+                            <h4>ID Proof Number:</h4>
+                            <input type="text" id="id-proof-number" placeholder="ID Proof Number" required>
+                        </div>
+                    </div>
+                    <div id="ticket-amount"></div>
+                    <button type="button" id="back-to-seat-selection" class="cta-btn">Back</button>
+                    <button type="button" id="continue-to-payment" class="cta-btn">Continue to Payment</button>
+                </div>
+
+                <div id="payment-section" class="hidden">
+                    <h3>Payment Method:</h3>
+                    <div class="payment-options">
+                        <label><input type="radio" name="payment-method" value="credit-card" checked> Credit Card</label>
+                        <label><input type="radio" name="payment-method" value="paypal"> PayPal</label>
+                        <label><input type="radio" name="payment-method" value="bank-transfer"> Bank Transfer</label>
+                    </div>
+                    <button type="button" id="back-to-passenger-details" class="cta-btn">Back</button>
+                    <button type="button" id="confirm-booking" class="cta-btn">Confirm Booking</button>
+                </div>
+
+                <div id="ticket-info-section" class="hidden">
+                    <div id="ticket-details"></div>
+                    <button type="button" id="close-ticket" class="cta-btn">Close</button>
+                    <button type="button" id="print-ticket" class="cta-btn">Print Ticket</button>
+                </div>
+                <div id="bookings-section" class="hidden">
+                    <h3>Your Bookings</h3>
+                    <ul id="bookingsList"></ul>
+                    <button id="cancelBookingBtn" class="cta-btn">Cancel Booking</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

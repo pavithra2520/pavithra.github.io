@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Booking System</title>
+    <style>
+        /* Resetting margins, paddings, and setting box-sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a; /* Dark background */
+            color: #fff; /* White text */
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        #app {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #ff4081; /* Pink color for headers */
+            margin-bottom: 20px;
+        }
+
+        input, textarea, select, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #333; /* Darker input background */
+            color: white; /* White text */
+            transition: border 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #ff4081; /* Pink border on focus */
+            outline: none; /* Remove outline */
+        }
+
+        button {
+            background-color: #ff4081; /* Pink button */
+            color: black; /* Black text */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #d5006d; /* Darker pink on hover */
+            transform: scale(1.05); /* Slight scaling effect */
+        }
+
+        .hidden {
+            display: none; /* Hidden class */
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            #app {
+                padding: 15px; /* Adjust padding for smaller screens */
+            }
+
+            h1, h2 {
+                font-size: 24px; /* Reduce header size */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>Bus Booking System</h2>
+        
+        <!-- Cancellation Section -->
+        <div id="cancellation-section">
+            <h2>Cancel Booking</h2>
+            <select id="cancel-bus-type">
+                <option value="" disabled selected>Select Bus Type</option>
+                <option value="Luxury">Luxury</option>
+                <option value="Standard">Standard</option>
+                <option value="Express">Express</option>
+            </select>
+            <input type="date" id="cancel-date" placeholder="Travel Date" />
+            <input type="time" id="cancel-time" placeholder="Travel Time" />
+            <input type="text" id="cancel-passenger-names" placeholder="Passenger Names (comma separated)" />
+            <input type="text" id="cancel-seat-numbers" placeholder="Seat Numbers (comma separated)" />
+            <textarea id="cancel-reason" placeholder="Reason for Cancellation"></textarea>
+            <button id="submit-cancellation">Submit Cancellation</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle seat booking
+        function bookSeats(selectedSeats) {
+            localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
+            alert('Seats booked: ' + selectedSeats.join(', '));
+        }
+
+        // Function to set up cancellation form
+        function setupCancellationForm() {
+            const savedSeats = JSON.parse(localStorage.getItem('selectedSeats')) || [];
+            const seatNumbersInput = document.getElementById('cancel-seat-numbers');
+
+            if (savedSeats.length > 0) {
+                seatNumbersInput.value = savedSeats.join(', '); // Display selected seats
+            } else {
+                seatNumbersInput.value = 'No seats booked'; // Handle case with no saved seats
+            }
+
+            document.getElementById('submit-cancellation').addEventListener('click', function() {
+                const busType = document.getElementById('cancel-bus-type').value;
+                const travelDate = document.getElementById('cancel-date').value;
+                const travelTime = document.getElementById('cancel-time').value;
+                const passengerNames = document.getElementById('cancel-passenger-names').value;
+                const seatNumbers = seatNumbersInput.value;
+                const cancellationReason = document.getElementById('cancel-reason').value;
+
+                if (busType && travelDate && travelTime && passengerNames && seatNumbers && cancellationReason) {
+                    alert(`Cancellation Request Submitted:\nBus Type: ${busType}\nDate: ${travelDate}\nTime: ${travelTime}\nPassengers: ${passengerNames}\nSeats: ${seatNumbers}\nReason: ${cancellationReason}`);
+                    
+                    // Clear fields
+                    document.getElementById('cancel-bus-type').selectedIndex = 0; // Reset dropdown
+                    document.getElementById('cancel-date').value = '';
+                    document.getElementById('cancel-time').value = '';
+                    document.getElementById('cancel-passenger-names').value = '';
+                    seatNumbersInput.value = '';
+                    document.getElementById('cancel-reason').value = '';
+                } else {
+                    alert('Please fill all fields!');
+                }
+            });
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            setupCancellationForm();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Bus Reservation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#"><img src="logo.png" alt="BusReserve Logo"></a>
+            </div>
+            <div class="logo">
+                <h1>BusReserve</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="in.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="route.html">Routes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="cancel.html">Cancellation</a></li>
+            </ul>
+            <a href="book.html" class="cta-btn">Book Now</a>
+            
+        </nav>
+        <div class="background"></div>
+        <div class="hero-content">
+            <h1>Book Your Journey in Seconds!</h1>
+            <p>Explore, Reserve, and Travel with Ease</p>
+        </div>
+    </header>
+    <section class="features">
+        <div class="features-heading">
+            <h2>Why Choose Us?</h2>
+            <p>Experience the best in class travel services with these benefits</p>
+        </div>
+        <div class="features-container">
+            <div class="feature-item">
+                <i class="fas fa-bus-alt"></i>
+                <h3>Easy Booking</h3>
+                <p>Book your bus in under 60 seconds with our user-friendly platform.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Wide Coverage</h3>
+                <p>Explore 1000+ routes across multiple cities and destinations.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>Our customer support team is available around the clock for your needs.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-chair"></i>
+                <h3>Comfortable Travel</h3>
+                <p>Enjoy luxurious, spacious seats and onboard services for a smooth journey.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-tag"></i>
+                <h3>Affordable Prices</h3>
+                <p>Get the best deals and competitive pricing on every booking.</p>
+            </div>
+        </div>
+    </section>
+    <style>
+        .feature-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 2s ease;
+        }
+    
+        .feature-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const featureItems = document.querySelectorAll('.feature-item');
+    
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+    
+            featureItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+    <section class="how-it-works">
+        <div class="how-it-works-heading">
+            <h2>How It Works</h2>
+            <p>Follow these simple steps to book your bus journey.</p>
+        </div>
+        <div class="steps-container">
+            <div class="step-item">
+                <i class="fas fa-search"></i>
+                <h3>Search</h3>
+                <p>Find available buses by entering your departure and destination cities along with travel dates.</p>
+            </div>
+            <div class="step-item">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Book</h3>
+                <p>Select your preferred bus and complete the booking process with a few simple steps.</p>
+            </div>
+            <div class="step-item">
+                <i class="fas fa-credit-card"></i>
+                <h3>Pay</h3>
+                <p>Securely pay for your booking using our payment gateway with multiple payment options.</p>
+            </div>
+            <div class="step-item">
+                <i class="fas fa-ticket-alt"></i>
+                <h3>Travel</h3>
+                <p>Receive your e-ticket and enjoy a comfortable and hassle-free journey to your destination.</p>
+            </div>
+        </div>
+    </section>
+    <style>
+        .step-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 3s ease;
+        }
+    
+        .step-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const stepItems = document.querySelectorAll('.step-item');
+    
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+    
+            stepItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+    <section class="testimonials">
+        <div class="testimonials-heading">
+            <h2>What Our Customers Say</h2>
+            <p>Read the experiences of our satisfied customers.</p>
+        </div>
+        <div class="testimonials-container">
+            <div class="testimonial-item">
+                <img src="user1.png" alt="User 1">
+                <p>"The booking process was incredibly easy and quick. I had a great experience with BusReserve!"</p>
+                <h4>John Doe</h4>
+                <p>Frequent Traveler</p>
+            </div>
+            <div class="testimonial-item">
+                <img src="user2.png" alt="User 2">
+                <p>"Affordable prices and comfortable seats. I will definitely use BusReserve again for my future travels."</p>
+                <h4>Jane Smith</h4>
+                <p>Business Executive</p>
+            </div>
+            <div class="testimonial-item">
+                <img src="user3.png" alt="User 3">
+                <p>"Excellent customer service and easy-to-use platform. Highly recommend BusReserve to everyone!"</p>
+                <h4>Emily</h4>
+                <p>Holiday Enthusiast</p>
+            </div>
+        </div>
+    </section>
+    <style>
+        .testimonial-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 3s ease;
+        }
+    
+        .testimonial-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const testimonialItems = document.querySelectorAll('.testimonial-item');
+    
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+    
+            testimonialItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+    <section class="popular-routes">
+        <div class="popular-routes-heading">
+            <h2>Popular Routes</h2>
+            <p>Explore our most popular routes and plan your journey.</p>
+        </div>
+        <div class="routes-container">
+            <div class="route-item">
+                <i class="fas fa-route"></i>
+                <h3>Chennai to Bangalore</h3>
+                <p>Travel comfortably between Chennai and Bangalore, two vibrant cities known for their rich culture and thriving IT industry.</p>
+            </div>
+            <div class="route-item">
+                <i class="fas fa-route"></i>
+                <h3>Chennai to Hyderabad</h3>
+                <p>Experience the scenic journey from Chennai to Hyderabad, famous for its historical landmarks and delicious cuisine.</p>
+            </div>
+            <div class="route-item">
+                <i class="fas fa-route"></i>
+                <h3>Hyderabad to Bangalore</h3>
+                <p>Experience a smooth ride from Hyderabad to Bangalore, a tech hub with a vibrant culture.</p>
+            </div>
+            <div class="route-item">
+                <i class="fas fa-route"></i>
+                <h3>Mumbai to Chennai</h3>
+                <p>Travel from Mumbai, the bustling financial capital, to Chennai, known for its heritage and beaches.</p>
+            </div>
+        </div>
+    </section>
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2>Stay Updated</h2>
+            <p>Sign up for our newsletter to receive the latest updates and offers.</p>
+            <form action="#" method="post" class="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="signup-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    <style>
+        .route-item, .newsletter-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 2s ease;
+        }
+    
+        .route-item.animate, .newsletter-content.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const routeItems = document.querySelectorAll('.route-item');
+            const newsletterContent = document.querySelector('.newsletter-content');
+    
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+    
+            routeItems.forEach(item => {
+                observer.observe(item);
+            });
+    
+            observer.observe(newsletterContent);
+        });
+    </script>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="#"><img src="banner2.png" alt="BusReserve Logo"></a>
+                <p>&copy; 2024 BusReserve. All rights reserved.</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-of-service.html">Terms of Service</a></li>
+                <li><a href="help-center.html">Help Center</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="footer-social">
+                <a href="https://www.facebook.com" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.twitter.com" class="social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com" class="social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            if (currentScroll < lastScrollTop) {
+                const stepsSection = document.querySelector('.how-it-works');
+                const testimonialSection = document.querySelector('.testimonials');
+                const stepItems = document.querySelectorAll('.step-item');
+                const testimonialItems = document.querySelectorAll('.testimonial-item');
+
+                if (stepsSection.getBoundingClientRect().top < window.innerHeight) {
+                    stepItems.forEach(item => {
+                        item.classList.add('animate');
+                    });
+                }
+
+                if (testimonialSection.getBoundingClientRect().top < window.innerHeight) {
+                    testimonialItems.forEach(item => {
+                        item.classList.add('animate');
+                    });
+                }
+            }
+
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+        });
+    </script>
+    <script>
+     const backgrounds = ['banner2.png', 'banner3.png', 'banner4.png']; // Your image paths
+let currentIndex = 0;
+function setInitialBackground() {
+    const background = document.querySelector('.background');
+    background.style.backgroundImage = `url('${backgrounds[currentIndex]}')`;
+}
+function changeBackground() {
+    const background = document.querySelector('.background');
+    currentIndex = (currentIndex + 1) % backgrounds.length;
+    background.style.opacity = 0; 
+    setTimeout(() => {
+        background.style.backgroundImage = `url('${backgrounds[currentIndex]}')`;
+        background.style.opacity = 1; 
+    }, 500); 
+}
+document.addEventListener('DOMContentLoaded', () => {
+    setInitialBackground(); 
+    setInterval(changeBackground, 5000); 
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const allItems = document.querySelectorAll('.feature-item, .step-item, .testimonial-item, .route-item, .newsletter-content');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target); 
+            }
+        });
+    });
+    allItems.forEach(item => {
+        observer.observe(item);
+    });
+});
+    </script>
+</body>
+</html>

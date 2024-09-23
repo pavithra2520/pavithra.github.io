@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="stylee.css">
+    <style>
+        /* Your existing CSS */
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+
+        .modal-content h2 {
+            margin: 0 0 15px;
+            color: #e91e63;
+        }
+
+        .modal-content input {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #333;
+            background-color: #333;
+            color: #ffffff;
+            border-radius: 5px;
+        }
+
+        .close {
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+            color: #e91e63;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .header {
+            background-color: rgba(30, 30, 30, 0.9);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10; /* Ensures the header stays above the video */
+            border: 2px solid #e91e63; /* Border around the header */
+            border-radius: 10px; /* Rounded corners for a smooth look */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for a 3D effect */
+            margin: 20px auto;
+            max-width: 90%; /* Centering the header */
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #e91e63;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        /* Video Background Styles */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.7; /* Adjust opacity for the desired effect */
+        }
+
+        .login-container {
+            background-color: rgba(30, 30, 30, 0.9); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            text-align: center;
+            margin: auto;
+            margin-top: 100px;
+            position: relative; /* Ensures it stays above the video */
+        }
+
+        .login-container h1 {
+            margin-bottom: 20px;
+            color: #e91e63;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #333;
+            background-color: #333;
+            color: #ffffff;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        button:hover {
+            background-color: #ff4081;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        a {
+            color: #e91e63;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <video class="video-background" autoplay muted loop>
+        <source src="backgroundbus.mp4" type="video/mp4"> <!-- Set the path to your .mp4 file -->
+        <source src="videos/background.webm" type="video/webm"> <!-- Set the path to your .webm file -->
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Header Section -->
+    <header class="header">
+        <h1>Welcome to Online Bus Booking</h1>
+        <p>Book your bus tickets easily and travel comfortably!</p>
+    </header>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="login-form" action="verify.php" method="POST">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+            <p><a href="#" id="forgot-password-link">Forgot Password?</a></p>
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+        </form>
+    </div>
+
+    <!-- Modal for Forgot Password -->
+    <div class="modal" id="forgot-password-modal">
+        <div class="modal-content">
+            <h2>Reset Password</h2>
+            <p>Please enter your email address to receive a password reset link.</p>
+            <input type="email" id="reset-email" placeholder="Email" required>
+            <button id="send-reset-link">Send Reset Link</button>
+            <span class="close" id="close-modal">Close</span>
+        </div>
+    </div>
+
+    <script src="scriptt.js"></script>
+    <script>
+        // JavaScript to handle modal functionality
+        const modal = document.getElementById('forgot-password-modal');
+        const forgotPasswordLink = document.getElementById('forgot-password-link');
+        const closeModal = document.getElementById('close-modal');
+        const sendResetLink = document.getElementById('send-reset-link');
+
+        // Show modal when link is clicked
+        forgotPasswordLink.onclick = function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            modal.style.display = 'flex'; // Show modal
+        }
+
+        // Close modal when the close button is clicked
+        closeModal.onclick = function() {
+            modal.style.display = 'none'; // Hide modal
+        }
+
+        // Functionality to send the reset link (for demonstration)
+        sendResetLink.onclick = function() {
+            const email = document.getElementById('reset-email').value;
+            if (email) {
+                alert(`Reset link sent to ${email}`); // Example alert
+                modal.style.display = 'none'; // Hide modal after sending
+            }
+        }
+
+        // Close modal when clicking outside of the modal content
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

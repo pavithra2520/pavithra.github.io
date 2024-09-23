@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Method</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section class="payment-method">
+        <h3>Payment Method:</h3>
+        <div class="payment-options">
+            <label>
+                <input type="radio" name="payment-method" value="credit-card" checked> Credit Card
+            </label>
+            <label>
+                <input type="radio" name="payment-method" value="paypal"> PayPal
+            </label>
+            <label>
+                <input type="radio" name="payment-method" value="bank-transfer"> Bank Transfer
+            </label>
+        </div>
+        <button type="button" id="confirm-booking" class="cta-btn" onclick="confirmBooking()">Confirm Booking</button>
+    </section>
+</body><script src="script.js"></script>
+</body>
+</html>
